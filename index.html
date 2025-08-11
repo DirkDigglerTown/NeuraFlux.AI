@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NeuraFlux.AI — Autonomous Liquidity Intelligence for Solana</title>
+  <meta name="description" content="NeuraFlux.AI is an autonomous AI liquidity and execution layer for Solana. Signal, simulate, and settle—at machine speed." />
+  <meta name="theme-color" content="#0b1118" />
+  <link rel="icon" href="./neuraflux-favicon-64.png" />
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    :root{
+      --bg:#070b10; --panel:#0b1118; --ink:#e9f1ff;
+      --muted:#98a7bd;
+      --accent1:#26ffa4; --accent2:#12b0ff; --accent3:#9e7bff;
+    }
+    html,body{background:var(--bg); color:var(--ink);}
+    body{font-size:18px; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;}
+
+    /* Background image (repo files) with subtle readability overlay */
+    body{
+      background:
+        radial-gradient(80% 60% at 50% 30%, rgba(12,18,26,0.22), rgba(7,11,16,0.65)),
+        url("./neuraflux-bg-4k-clean.png") center / cover no-repeat fixed,
+        #070b10;
+    }
+    @media (max-width: 1024px){
+      body{
+        background:
+          radial-gradient(80% 60% at 50% 30%, rgba(12,18,26,0.22), rgba(7,11,16,0.65)),
+          url("./neuraflux-bg-1080-clean.png") center / cover no-repeat,
+          #070b10;
+      }
+    }
+
+    .glass{backdrop-filter:saturate(130%) blur(10px); background:rgba(255,255,255,.04);}
+    .badge{border:1px solid rgba(255,255,255,.12)}
+    .btn{border:1px solid rgba(255,255,255,.14); padding:.85rem 1.25rem; border-radius:14px;}
+    .btn-primary{background:rgba(255,255,255,.10);}
+    .btn:hover{border-color:rgba(255,255,255,.25); background:rgba(255,255,255,.14)}
+    .link-muted{color:#cbd8ee} .link-muted:hover{color:#fff}
+
+    h1{font-size:clamp(2.8rem, 3.4vw + 1rem, 4.2rem); line-height:1.08; letter-spacing:-0.02em;}
+    h2{font-size:clamp(1.8rem, 1.2vw + 1rem, 2.3rem); letter-spacing:-0.01em;}
+    h3{font-size:1.15rem;}
+    p{color:#d7e3fb;}
+    .divider{height:1px; background:linear-gradient(90deg,transparent,rgba(255,255,255,.12),transparent)}
+
+    /* “Soon” chips */
+    .chip{font-size:.85rem; padding:.25rem .6rem; border-radius:999px; border:1px solid rgba(255,255,255,.15); color:#cfe2ff;}
+    .mono{font-feature-settings:"ss01" on, "cv01" on}
+  </style>
+</head>
+<body class="antialiased selection:bg-teal-300/20 selection:text-white">
+
+  <!-- NAV -->
+  <header class="sticky top-0 z-50">
+    <div class="mx-auto max-w-7xl px-6">
+      <div class="glass rounded-2xl border border-white/10 mt-4 px-5">
+        <div class="flex items-center justify-between h-16">
+          <a href="#" class="flex items-center gap-3">
+            <img src="./neuraflux-logo-horizontal-1200.png" alt="NeuraFlux.AI" class="h-9 w-auto" />
+          </a>
+          <nav class="hidden md:flex items-center gap-7 text-base">
+            <a class="link-muted" href="#about">About</a>
+            <a class="link-muted" href="#tech">Tech</a>
+            <a class="link-muted" href="#utility">Utility</a>
+            <a class="link-muted" href="#roadmap">Roadmap</a>
+            <a class="link-muted" href="#docs">Docs</a>
+          </nav>
+          <div class="flex items-center gap-3">
+            <a href="mailto:contact@neuraflux.ai?subject=NeuraFlux%20Waitlist" class="btn btn-primary">Join Waitlist</a>
+            <button id="menuBtn" class="md:hidden btn" aria-label="Open menu">☰</button>
+          </div>
+        </div>
+      </div>
+      <div id="mobileMenu" class="md:hidden hidden">
+        <div class="glass mt-3 rounded-2xl border border-white/10 p-3">
+          <a class="block py-2 link-muted" href="#about">About</a>
+          <a class="block py-2 link-muted" href="#tech">Tech</a>
+          <a class="block py-2 link-muted" href="#utility">Utility</a>
+          <a class="block py-2 link-muted" href="#roadmap">Roadmap</a>
+          <a class="block py-2 link-muted" href="#docs">Docs</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="relative">
+    <div class="mx-auto max-w-7xl px-6 pt-16 lg:pt-24 pb-8">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <div class="flex items-center gap-2 mb-5">
+            <span class="chip">Private Alpha • Coming Soon</span>
+          </div>
+          <h1>Autonomous Liquidity Intelligence for Solana</h1>
+          <p class="mt-5 max-w-xl">
+            Signal, simulate, and settle—at machine speed. NeuraFlux unifies predictive signals,
+            Monte Carlo risk, and MEV-aware routing into a single, non-custodial execution layer.
+          </p>
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a href="mailto:contact@neuraflux.ai?subject=NeuraFlux%20Waitlist" class="btn btn-primary">Join Waitlist</a>
+            <a href="#" class="btn opacity-60 pointer-events-none">Launch dApp <span class="ml-2 chip">Coming Soon</span></a>
+          </div>
+          <div class="mt-6 flex flex-wrap gap-3 text-sm text-[#b8c7e2]">
+            <span class="badge px-3 py-1.5 rounded-lg">Non-custodial</span>
+            <span class="badge px-3 py-1.5 rounded-lg">Open APIs</span>
+            <span class="badge px-3 py-1.5 rounded-lg">MEV-aware routing</span>
+          </div>
+        </div>
+
+        <!-- Clean, simple feature visuals -->
+        <div>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <img src="./tile-signals.png"    alt="Signals API"       class="rounded-2xl border border-white/10">
+            <img src="./tile-simulation.png" alt="Simulation Engine" class="rounded-2xl border border-white/10">
+            <img src="./tile-execution.png"  alt="Execution Router"  class="rounded-2xl border border-white/10">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider mx-auto max-w-7xl"></div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="mx-auto max-w-7xl px-6 py-16">
+      <div class="grid lg:grid-cols-2 gap-10 items-start">
+        <div class="glass rounded-2xl border border-white/10 p-8">
+          <h2>What is NeuraFlux.AI?</h2>
+          <p class="mt-4">
+            A research-driven execution and liquidity layer purpose-built for Solana’s throughput.
+            We ingest on-chain depth, flow, and volatility; stress-test policies via Monte Carlo; and route
+            with bundle-aware, MEV-sensitive heuristics—without taking custody of keys.
+          </p>
+          <ul class="mt-5 space-y-2 list-disc list-inside text-[#d7e3fb]">
+            <li>Signal ingestion via streaming oracles & custom adapters</li>
+            <li>Scenario testing with PnL bands & drawdown limits</li>
+            <li>Routing across AMMs/RFQs with slippage controls</li>
+          </ul>
+        </div>
+        <div class="glass rounded-2xl border border-white/10 p-8">
+          <h2>Why it matters</h2>
+          <p class="mt-4">
+            Latency, slippage, and fragmentation degrade returns. By unifying signal → simulation → execution,
+            NeuraFlux reduces cost to trade while preserving transparency and self-custody.
+          </p>
+          <div class="mt-6 grid grid-cols-2 gap-4 text-sm text-[#c5d4ee]">
+            <div class="badge rounded-xl px-3 py-2">Signed requests</div>
+            <div class="badge rounded-xl px-3 py-2">On-chain receipts</div>
+            <div class="badge rounded-xl px-3 py-2">SDK: TS & Rust</div>
+            <div class="badge rounded-xl px-3 py-2">Audit scheduled</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TECH -->
+  <section id="tech">
+    <div class="mx-auto max-w-7xl px-6 py-8">
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="glass rounded-2xl border border-white/10 p-6">
+          <h3>Signals API</h3>
+          <p class="mt-2 text-[#cfe0ff]">
+            Curated features: on-chain liquidity, depth deltas, vol surfaces, social momentum. Adapter system for your own alpha.
+          </p>
+        </div>
+        <div class="glass rounded-2xl border border-white/10 p-6">
+          <h3>Simulation Engine</h3>
+          <p class="mt-2 text-[#cfe0ff]">
+            Monte Carlo stress tests with drawdown limits and fee/slippage models. Export PnL bands before risking capital.
+          </p>
+        </div>
+        <div class="glass rounded-2xl border border-white/10 p-6">
+          <h3>Execution Router</h3>
+          <p class="mt-2 text-[#cfe0ff]">
+            Route across AMMs & RFQs with MEV-aware heuristics. TWAP/SWAP/bundle by expected slippage & latency.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOKEN / ACCESS -->
+  <section id="utility">
+    <div class="mx-auto max-w-7xl px-6 py-16">
+      <div class="grid lg:grid-cols-2 gap-10 items-start">
+        <div class="glass rounded-2xl border border-white/10 p-8">
+          <h2>$NFLX Token Utility</h2>
+          <ul class="mt-4 space-y-3">
+            <li><span class="font-medium text-white">Compute Credits:</span> Stake to unlock API/backtest credits.</li>
+            <li><span class="font-medium text-white">Router Rebates:</span> Earn fee rebates on routed flow.</li>
+            <li><span class="font-medium text-white">Governance:</span> Vote on signal curation & risk params.</li>
+            <li><span class="font-medium text-white">Pro Tier:</span> Holder thresholds for advanced dashboards.</li>
+          </ul>
+        </div>
+        <div class="glass rounded-2xl border border-white/10 p-8">
+          <h2>Access</h2>
+          <p class="mt-3">
+            Private alpha will roll out to waitlist wallets in waves. SDK examples and a hosted backtest portal will
+            ship first. Mainnet router integrations will follow after audit.
+          </p>
+          <div class="mt-5 flex flex-wrap gap-3">
+            <a href="mailto:contact@neuraflux.ai?subject=NeuraFlux%20Waitlist" class="btn btn-primary">Join Waitlist</a>
+            <span class="chip">SDK • Coming Soon</span>
+            <span class="chip">Portal • Coming Soon</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROADMAP -->
+  <section id="roadmap">
+    <div class="mx-auto max-w-7xl px-6 py-8">
+      <h2 class="mb-6">Roadmap</h2>
+      <div class="grid md:grid-cols-4 gap-6">
+        <div class="glass rounded-2xl border border-white/10 p-6">
+          <div class="text-[#aab6cb]">Q3</div>
+          <div class="font-semibold">Alpha</div>
+          <ul class="mt-2 text-sm space-y-1 text-[#cfe0ff]">
+            <li>Signals API v1</li><li>Backtest portal</li><li>Router MVP</li>
+          </ul>
+        </div>
+        <div class="glass rounded-2xl border border-white/10 p-6">
+          <div class="text-[#aab6cb]">Q4</div>
+          <div class="font-semibold">Beta</div>
+          <ul class="mt-2 text-sm space-y-1 text-[#cfe0ff]">
+            <li>Policy marketplace</li><li>SDK TS/Rust</li><li>Audit report</li>
+          </ul>
+        </div>
+        <div class="glass rounded-2xl border border-white/10 p-6">
+          <div class="text-[#aab6cb]">Q1</div>
+          <div class="font-semibold">Mainnet</div>
+          <ul class="mt-2 text-sm space-y-1 text-[#cfe0ff]">
+            <li>MEV-aware bundles</li><li>RFQ integrations</li><li>Pro dashboards</li>
+          </ul>
+        </div>
+        <div class="glass rounded-2xl border border-white/10 p-6">
+          <div class="text-[#aab6cb]">Q2</div>
+          <div class="font-semibold">Scale</div>
+          <ul class="mt-2 text-sm space-y-1 text-[#cfe0ff]">
+            <li>Cross-venue routing</li><li>Treasury strategies</li><li>L2 data partners</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DOCS -->
+  <section id="docs">
+    <div class="mx-auto max-w-7xl px-6 py-16">
+      <div class="grid lg:grid-cols-2 gap-10 items-start">
+        <div class="glass rounded-2xl border border-white/10 p-8">
+          <h2>Quick Start (Preview)</h2>
+          <p class="mt-3">SDK snippets are illustrative—packages publish at beta.</p>
+<pre class="mt-4 text-sm bg-black/30 rounded-xl p-4 overflow-x-auto border border-white/10 mono"><code>// TypeScript (preview)
+import { NFClient } from '@neuraflux/sdk'
+const nf = new NFClient({ cluster: 'mainnet-beta' })
+await nf.connectWallet()
+const stream = nf.signals.subscribe(['depth_delta','vol_surface'])
+const policy = await nf.simulate({ objective:'min_slippage', maxDrawdown:0.1, horizon:'15m' })
+const exec = await nf.execute(policy)
+console.log('tx', exec.signature)</code></pre>
+          <div class="mt-4"><span class="chip">Docs • Coming Soon</span></div>
+        </div>
+        <div class="glass rounded-2xl border border-white/10 p-8">
+          <h2>Security & Disclaimers</h2>
+          <p class="mt-2 text-[#c6d6f0]">
+            Independent security review is scheduled prior to mainnet. This site is a concept and is not
+            an offer to sell or solicitation to buy any security or financial instrument. No financial advice.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="pb-20">
+    <div class="mx-auto max-w-3xl text-center p-8 glass rounded-3xl border border-white/10">
+      <h2 class="text-3xl font-semibold">Be first to the alpha.</h2>
+      <p class="mt-3">We’ll invite waitlist wallets in waves as components come online.</p>
+      <div class="mt-6 flex flex-wrap justify-center gap-3">
+        <a href="mailto:contact@neuraflux.ai?subject=NeuraFlux%20Waitlist" class="btn btn-primary">Join Waitlist</a>
+        <a href="#" class="btn opacity-60 pointer-events-none">Press Kit <span class="ml-2 chip">Coming Soon</span></a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="border-t border-white/10 py-8 text-center text-sm text-[#a7b5cc]">
+    © <span id="year"></span> NeuraFlux.AI • Built for Solana • contact@neuraflux.ai
+  </footer>
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if (menuBtn) menuBtn.addEventListener('click', ()=> mobileMenu.classList.toggle('hidden'));
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
