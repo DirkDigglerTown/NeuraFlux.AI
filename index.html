@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NeuraFlux.AI — Autonomous Liquidity Intelligence for Solana</title>
+  <meta name="description" content="NeuraFlux.AI is an autonomous AI liquidity and execution layer for Solana. Signal, simulate, and settle—at machine speed." />
+
+  <!-- Favicon -->
+  <link rel="icon" href="./neuraflux-favicon-64.png" />
+
+  <!-- Tailwind (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    :root{
+      --bg:#070b10; --panel:#0b1118; --muted:#93a3b8;
+      --accent1:#26ffa4; --accent2:#12b0ff; --accent3:#9e7bff;
+    }
+    html,body{background:var(--bg);}
+    body{font-size:18px; color:#e5eefc;}
+
+    /* Reliable background: overlay + image + fallback color */
+    body{
+      background:
+        radial-gradient(80% 60% at 50% 30%, rgba(12,18,26,0.25), rgba(7,11,16,0.65)),
+        url("./neuraflux-bg-4k-clean.png") center / cover no-repeat fixed,
+        #070b10;
+    }
+    @media (max-width: 1024px){
+      body{
+        background:
+          radial-gradient(80% 60% at 50% 30%, rgba(12,18,26,0.25), rgba(7,11,16,0.65)),
+          url("./neuraflux-bg-1080-clean.png") center / cover no-repeat,
+          #070b10;
+      }
+    }
+
+    .glass{backdrop-filter:saturate(130%) blur(8px);}
+    .gradient-text{
+      background:linear-gradient(90deg,var(--accent1),var(--accent2),var(--accent3));
+      -webkit-background-clip:text;background-clip:text;color:transparent;
+    }
+    .badge{border:1px solid rgba(255,255,255,.12)}
+    h1{font-size:clamp(2.4rem, 3.5vw + 1rem, 3.75rem); line-height:1.15;}
+    h2{font-size:clamp(1.6rem, 1.4vw + 1rem, 2.1rem)}
+    img{max-width:100%; height:auto; display:block}
+  </style>
+</head>
+<body class="antialiased selection:bg-teal-300/20 selection:text-white">
+
+  <!-- NAV -->
+  <header class="sticky top-0 z-50">
+    <div class="relative mx-auto max-w-7xl px-6">
+      <div class="flex items-center justify-between py-4">
+        <a href="#" class="flex items-center gap-3">
+          <img src="./neuraflux-logo-horizontal-1200.png"
+               width="1200" height="400" alt="NeuraFlux.AI" class="h-10 w-auto" />
+        </a>
+        <nav class="hidden md:flex items-center gap-6 text-slate-200 text-base">
+          <a href="#about" class="hover:text-white">About</a>
+          <a href="#tech" class="hover:text-white">Tech</a>
+          <a href="#utility" class="hover:text-white">Utility</a>
+          <a href="#roadmap" class="hover:text-white">Roadmap</a>
+          <a href="#docs" class="hover:text-white">Docs</a>
+        </nav>
+        <div class="flex items-center gap-3">
+          <a href="#cta" class="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/15 border border-white/10 text-base">Launch dApp</a>
+          <button id="menuBtn" class="md:hidden p-2 border border-white/10 rounded-lg" aria-label="Open menu">☰</button>
+        </div>
+      </div>
+      <div id="mobileMenu" class="md:hidden hidden border-t border-white/10 pb-4">
+        <a href="#about" class="block py-2 text-slate-200 text-base">About</a>
+        <a href="#tech" class="block py-2 text-slate-200 text-base">Tech</a>
+        <a href="#utility" class="block py-2 text-slate-200 text-base">Utility</a>
+        <a href="#roadmap" class="block py-2 text-slate-200 text-base">Roadmap</a>
+        <a href="#docs" class="block py-2 text-slate-200 text-base">Docs</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="relative overflow-hidden">
+    <div class="relative mx-auto max-w-7xl px-6 py-16 lg:py-24 flex flex-col lg:flex-row gap-10 items-center">
+      <div class="w-full lg:w-1/2">
+        <h1 class="font-semibold">
+          Autonomous Liquidity Intelligence for <span class="gradient-text">Solana</span>
+        </h1>
+        <p class="mt-5 text-slate-200/90 max-w-xl">
+          NeuraFlux.AI orchestrates signal ingestion, Monte Carlo simulation, and
+          MEV-aware execution to optimize swaps and liquidity at machine speed—without
+          sacrificing custody.
+        </p>
+        <div class="mt-6 flex flex-wrap gap-3">
+          <span class="badge text-base px-3 py-1.5 rounded-lg text-slate-200/90">Non-custodial</span>
+          <span class="badge text-base px-3 py-1.5 rounded-lg text-slate-200/90">Open APIs</span>
+          <span class="badge text-base px-3 py-1.5 rounded-lg text-slate-200/90">MEV-aware routing</span>
+        </div>
+        <div class="mt-8 flex flex-wrap gap-4">
+          <a href="#cta" class="px-5 py-3 rounded-xl bg-white/10 hover:bg-white/15 border border-white/15 text-base">Launch dApp</a>
+          <a href="#docs" class="px-5 py-3 rounded-xl border border-white/10 hover:border-white/20 text-base">Read Docs</a>
+        </div>
+      </div>
+
+      <!-- Feature tiles (repo images) -->
+      <div class="w-full lg:w-1/2">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <img src="./tile-signals.png"    alt="Signals API"       width="800" height="520" class="rounded-2xl border border-white/10">
+          <img src="./tile-simulation.png" alt="Simulation Engine" width="800" height="520" class="rounded-2xl border border-white/10">
+          <img src="./tile-execution.png"  alt="Execution Router"  width="800" height="520" class="rounded-2xl border border-white/10">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST / BADGES -->
+  <section class="relative">
+    <div class="mx-auto max-w-7xl px-6 pb-10">
+      <div class="grid md:grid-cols-3 gap-4">
+        <div class="glass bg-white/5 rounded-2xl p-4 border border-white/10 flex items-center gap-3">
+          <div class="h-10 w-10 rounded-lg bg-gradient-to-br from-teal-400/30 to-indigo-400/30"></div>
+          <div>
+            <div class="text-slate-200 text-base">Audit-in-Progress</div>
+            <div class="text-slate-400 text-sm">Independent security review scheduled</div>
+          </div>
+        </div>
+        <div class="glass bg-white/5 rounded-2xl p-4 border border-white/10 flex items-center gap-3">
+          <div class="h-10 w-10 rounded-lg bg-gradient-to-br from-indigo-400/30 to-purple-400/30"></div>
+          <div>
+            <div class="text-slate-200 text-base">Open SDK</div>
+            <div class="text-slate-400 text-sm">Typescript & Rust clients</div>
+          </div>
+        </div>
+        <div class="glass bg-white/5 rounded-2xl p-4 border border-white/10 flex items-center gap-3">
+          <div class="h-10 w-10 rounded-lg bg-gradient-to-br from-teal-400/30 to-cyan-400/30"></div>
+          <div>
+            <div class="text-slate-200 text-base">Non-Custodial</div>
+            <div class="text-slate-400 text-sm">Your keys, your flow</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="relative py-16">
+    <div class="mx-auto max-w-7xl px-6">
+      <div class="grid lg:grid-cols-2 gap-10 items-center">
+        <div class="glass bg-white/5 rounded-2xl p-8 border border-white/10">
+          <h2 class="font-semibold">What is NeuraFlux.AI?</h2>
+          <p class="mt-3 text-slate-200/90">
+            NeuraFlux.AI is a research-driven execution and liquidity layer that combines
+            transformer-based signal models with on-chain simulation and an MEV-aware router.
+            Designed for Solana’s high-throughput architecture, it feeds real-time features
+            (orderflow, volatility, social velocity) into an agentic policy network that
+            decides when and how to quote, swap, or shift liquidity bands.
+          </p>
+          <ul class="mt-4 space-y-2 text-slate-200/90 list-disc list-inside">
+            <li>Signal ingestion via streaming oracles and custom adapters</li>
+            <li>Monte Carlo scenario testing with slippage, fees, and failure modes</li>
+            <li>Execution across AMMs and RFQs with bundle-aware routing</li>
+          </ul>
+        </div>
+        <div class="glass bg-white/5 rounded-2xl p-8 border border-white/10">
+          <h2 class="font-semibold">Why it matters</h2>
+          <p class="mt-3 text-slate-200/90">
+            Latency, slippage, and fragmented liquidity kill performance. By coupling
+            predictive signals with a simulation-first workflow and MEV-aware routing,
+            NeuraFlux reduces execution cost while maintaining full key custody.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TECH -->
+  <section id="tech" class="relative py-16">
+    <div class="mx-auto max-w-7xl px-6">
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="glass bg-white/5 rounded-2xl p-6 border border-white/10">
+          <h3 class="font-semibold">Signals API</h3>
+          <p class="mt-2 text-slate-200/90">
+            Curated features: on-chain liquidity, depth deltas, volatility surfaces, and social momentum.
+            Plug-in adapters for your own alpha streams.
+          </p>
+        </div>
+        <div class="glass bg-white/5 rounded-2xl p-6 border border-white/10">
+          <h3 class="font-semibold">Simulation Engine</h3>
+          <p class="mt-2 text-slate-200/90">
+            Stress-test policies with Monte Carlo runs and risk overlays. Export PnL bands and drawdown stats
+            before committing capital.
+          </p>
+        </div>
+        <div class="glass bg-white/5 rounded-2xl p-6 border border-white/10">
+          <h3 class="font-semibold">Execution Router</h3>
+          <p class="mt-2 text-slate-200/90">
+            Route across AMMs and RFQ venues with MEV-aware heuristics. TWAP/SWAP/bundle depending on expected
+            slippage and latency.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- UTILITY / TOKEN -->
+  <section id="utility" class="relative py-16">
+    <div class="mx-auto max-w-7xl px-6">
+      <div class="grid lg:grid-cols-2 gap-10 items-center">
+        <div class="glass bg-white/5 rounded-2xl p-8 border border-white/10">
+          <h2 class="font-semibold">$NFLX Token Utility</h2>
+          <ul class="mt-4 space-y-3 text-slate-200/90">
+            <li><span class="text-slate-100 font-medium">Compute Credits:</span> Stake to access API credits for backtests and live policies.</li>
+            <li><span class="text-slate-100 font-medium">Router Rebates:</span> Earn fee rebates when routing orderflow through the dApp.</li>
+            <li><span class="text-slate-100 font-medium">Governance:</span> Vote on model releases, signal curation, and risk parameters.</li>
+            <li><span class="text-slate-100 font-medium">Pro Tier:</span> Hold threshold to unlock advanced dashboards and SDK limits.</li>
+          </ul>
+        </div>
+        <div class="glass bg-white/5 rounded-2xl p-8 border border-white/10">
+          <h2 class="font-semibold">Access</h2>
+          <p class="mt-3 text-slate-200/90">
+            Access tiers are non-custodial. All requests are signed by your wallet; execution occurs on your
+            connected venues with full transparency and logs.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROADMAP -->
+  <section id="roadmap" class="relative py-16">
+    <div class="mx-auto max-w-7xl px-6">
+      <h2 class="font-semibold mb-6">Roadmap</h2>
+      <div class="grid md:grid-cols-4 gap-6">
+        <div class="glass bg-white/5 rounded-2xl p-6 border border-white/10">
+          <div class="text-slate-400 text-base">Q3</div>
+          <div class="font-semibold">Alpha</div>
+          <ul class="mt-2 text-slate-200/90 text-base space-y-1">
+            <li>Signals API v1</li><li>Backtest portal</li><li>Router MVP</li>
+          </ul>
+        </div>
+        <div class="glass bg-white/5 rounded-2xl p-6 border border-white/10">
+          <div class="text-slate-400 text-base">Q4</div>
+          <div class="font-semibold">Beta</div>
+          <ul class="mt-2 text-slate-200/90 text-base space-y-1">
+            <li>Policy marketplace</li><li>SDK TS/Rust</li><li>Audit report</li>
+          </ul>
+        </div>
+        <div class="glass bg-white/5 rounded-2xl p-6 border border-white/10">
+          <div class="text-slate-400 text-base">Q1</div>
+          <div class="font-semibold">Mainnet</div>
+          <ul class="mt-2 text-slate-200/90 text-base space-y-1">
+            <li>MEV-aware bundles</li><li>RFQ integrations</li><li>Pro dashboards</li>
+          </ul>
+        </div>
+        <div class="glass bg-white/5 rounded-2xl p-6 border border-white/10">
+          <div class="text-slate-400 text-base">Q2</div>
+          <div class="font-semibold">Scale</div>
+          <ul class="mt-2 text-slate-200/90 text-base space-y-1">
+            <li>Cross-venue routing</li><li>Treasury strategies</li><li>L2 data partners</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DOCS / CODE SAMPLE -->
+  <section id="docs" class="relative py-16">
+    <div class="mx-auto max-w-7xl px-6">
+      <div class="grid lg:grid-cols-2 gap-10 items-start">
+        <div class="glass bg-white/5 rounded-2xl p-8 border border-white/10">
+          <h2 class="font-semibold">Quick Start</h2>
+          <p class="mt-3 text-slate-200/90">
+            Use the SDK to stream signals and submit simulated policies. All requests are
+            signed by your wallet; no custody given.
+          </p>
+          <pre class="mt-4 text-sm bg-black/30 rounded-xl p-4 overflow-x-auto border border-white/10"><code>// TypeScript
+import { NFClient } from '@neuraflux/sdk'
+const nf = new NFClient({ cluster: 'mainnet-beta' })
+await nf.connectWallet()
+const stream = nf.signals.subscribe(['depth_delta','vol_surface'])
+const policy = await nf.simulate({
+  objective: 'min_slippage',
+  maxDrawdown: 0.1,
+  horizon: '15m'
+})
+const exec = await nf.execute(policy)
+console.log('tx', exec.signature)
+</code></pre>
+        </div>
+        <div class="glass bg-white/5 rounded-2xl p-8 border border-white/10">
+          <h3 class="font-semibold">Disclaimers</h3>
+          <p class="mt-2 text-slate-400 text-base">
+            This site is a concept and is not an offer to sell or solicitation of an offer to buy any security or
+            financial instrument. No financial advice.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="cta" class="relative py-20">
+    <div class="relative mx-auto max-w-3xl text-center p-8 rounded-3xl glass bg-white/5 border border-white/10">
+      <h2 class="text-3xl font-semibold">Ready to optimize your flow?</h2>
+      <p class="mt-3 text-slate-200/90">Spin up your first policy in minutes. Connect wallet to begin.</p>
+      <div class="mt-6 flex flex-wrap justify-center gap-3">
+        <a href="#" class="px-5 py-3 rounded-xl bg-white/10 border border-white/10 text-base">Connect Wallet</a>
+        <a href="#docs" class="px-5 py-3 rounded-xl border border-white/10 text-base">View Docs</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="border-t border-white/10 py-8 text-center text-sm text-slate-400">
+    © <span id="year"></span> NeuraFlux.AI • Built for Solana • contact@neuraflux.ai
+  </footer>
+
+  <script>
+    // Mobile nav + year
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if (menuBtn) menuBtn.addEventListener('click', ()=> mobileMenu.classList.toggle('hidden'));
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
